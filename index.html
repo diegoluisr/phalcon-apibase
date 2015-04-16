@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="ApiBase">
+    <head>
+        <title>ApiBase</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src="cpanel/libs/angular-route.min.js"></script>
+        <script src="cpanel/libs/utils.js"></script>
+        <script src="cpanel/controllers/app.js"></script>
+        <script src="cpanel/controllers/AccountCtrl.js"></script>
+        <script src="cpanel/controllers/MenuCtrl.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default" ng-controller="MenuCtrl">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle Nav</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Api Base</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Actions <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#/register">SignUp</a></li>
+                            <li><a href="#/login">Login</a></li>
+                            <li class="divider"></li>
+                            <li><a href="http://diegoluisr.com">diegoluisr.com</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="flash"></div>
+        <div ng-view></div>
+    </body>
+</html>
