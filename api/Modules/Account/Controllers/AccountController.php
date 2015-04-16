@@ -9,14 +9,43 @@ use \DateTime,
     \Phalcon\Filter,
     \Phalcon\Http\Response;
 
+/**
+ * /Api/Modules/Account/Controllers/AccountController.php
+ * 
+ * AccountController
+ * 
+ * PHP version 5.3
+ * 
+ * @category   Module
+ * @package    /Api/Modules/Account/Controllers
+ * @author     Diego Luis Restrepo <diegoluisr@gmail.com>
+ * @license    http://www.opensource.org/licenses/mit-license.html MIT License
+ * @version    GIT: $Id$
+ * @since      0.0.1
+ */
 class AccountController extends AppController{
 
     protected $name = 'Account';
 
+     /**
+     * 
+     * Constructor method
+     *
+     * @return void
+    */
     public function __construct(){
         parent::__construct();
     }
 
+    /**
+     * 
+     * Login
+     *
+     * @param string $_POST['email']         User email
+     * @param string $_POST['password']         User password
+     *
+     * @return Response $this->response
+    */
     public function login(){
         $filter = new Filter();
 
@@ -67,13 +96,26 @@ class AccountController extends AppController{
 
         return $this->response;
     }
-
+    /**
+     * 
+     * Me
+     *
+     * @return Response $this->response
+    */
     public function me(){
         $this->output['data'] = $this->user;
         $this->response->setContent(json_encode($this->output));
         return $this->response;
     }
-    
+    /**
+     * 
+     * Logout
+     *
+     * @param string $_getHeader['token']         AccessToken token
+     *
+     * @return Response $this->response
+    */
+
     public function logout(){
 
         $access_token = $this->request->getHeader('TOKEN');

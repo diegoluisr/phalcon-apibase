@@ -3,6 +3,20 @@ namespace Api\Modules\Account\Models;
 
 use Api\Models\AppModel;
 
+/**
+ * /Api/Modules/Account/Models/User.php
+ * 
+ * User
+ * 
+ * PHP version 5.3
+ * 
+ * @category   Module
+ * @package    /Api/Modules/Account/Models
+ * @author     Diego Luis Restrepo <diegoluisr@gmail.com>
+ * @license    http://www.opensource.org/licenses/mit-license.html MIT License
+ * @version    GIT: $Id$
+ * @since      0.0.1
+ */
 class User extends AppModel {
 
     /**
@@ -44,7 +58,12 @@ class User extends AppModel {
      */
     public $deleted_at = '0000-00-00 00:00:00';
 
-
+    /**
+     * 
+     * initialize
+     *
+     * @return void
+    */
     public function initialize() {
         $this->belongsTo('group_id', '\Api\Modules\Account\Models\Group', 'id', array(
             'alias' => 'Group'
@@ -52,26 +71,51 @@ class User extends AppModel {
         $this->useDynamicUpdate(true);
         return;
     }
-
+    /**
+     * 
+     * getSource
+     *
+     * @return void
+    */
     public function getSource() {
         return "users";
     }
-
+    /**
+     * 
+     * beforeCreate
+     *
+     * @return void
+    */
     public function beforeCreate() {
         $this->created_at = date('Y-m-d H:i:s');
         $this->modified_at = date('Y-m-d H:i:s');
         $this->deleted_at = '0000-00-00 00:00:00';
     }
-
+    /**
+     * 
+     * beforeUpdate
+     *
+     * @return void
+    */
     public function beforeUpdate() {
         $this->modified_at = date('Y-m-d H:i:s');
     }
-
+    /**
+     * 
+     * validation
+     *
+     * @return $this->validationHasFailed
+    */
     public function validation() {
         parent::validation();
         return $this->validationHasFailed() != true;
     }
-
+    /**
+     * 
+     * getValidUser
+     *
+     * @return null
+    */
     public static function getValidUser($id) {
         $user = self::findFirst(
             array(

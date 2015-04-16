@@ -6,14 +6,40 @@ use \Api\Controllers\AppController,
     \Phalcon\Filter,
     \Phalcon\Http\Response;
 
+/**
+ * /Api/Modules/Account/Controllers/UsersController.php
+ * 
+ * UsersController
+ * 
+ * PHP version 5.3
+ * 
+ * @category   Module
+ * @package    /Api/Modules/Account/Controllers
+ * @author     Diego Luis Restrepo <diegoluisr@gmail.com>
+ * @license    http://www.opensource.org/licenses/mit-license.html MIT License
+ * @version    GIT: $Id$
+ * @since      0.0.1
+*/
 class UsersController extends AppController{
 
     protected $name = 'Users';
 
+    /**
+     * 
+     * Constructor method
+     *
+     * @return void
+    */
     public function __construct(){
         parent::__construct();
     }
     
+    /**
+     * 
+     * Search an Account
+     *
+     * @return Response $this->response
+    */
     public function index(){
 
         $options = $this->prepareSearch(
@@ -53,7 +79,15 @@ class UsersController extends AppController{
         $this->response->setContent(json_encode($this->output));
         return $this->response;
     }
-
+    /**
+     * 
+     * Add an Account
+     *
+     * @param string $_POST['email']         User email
+     * @param string $_POST['password']      User password
+     *
+     * @return Response $this->response
+    */
     public function add() {
 
         $filter = new Filter();
@@ -80,6 +114,12 @@ class UsersController extends AppController{
         return $this->response;
     }
 
+    /**
+     * 
+     * Edit an Account
+     *
+     * @return Response $this->response
+    */
     public function edit($id = null) {
 
         if($id != null) {
@@ -104,7 +144,12 @@ class UsersController extends AppController{
         $this->response->setContent(json_encode($this->output));
         return $this->response;
     }
-
+    /**
+     * 
+     * View an Account
+     *
+     * @return Response $this->response
+    */
     public function view($id = null) {
         $this->isAuthorized('view');
         if($id != null) {

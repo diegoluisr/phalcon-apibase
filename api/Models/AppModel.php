@@ -9,8 +9,28 @@ use Phalcon\Mvc\Model,
     Phalcon\Mvc\Model\Validator\PresenceOf as PresenceOfValidator,
     Phalcon\Mvc\Model\Validator\Regex as RegexValidator;
 
+/**
+ * /Api/Models/AppModel.php
+ * 
+ * AppModel
+ * 
+ * PHP version 5.3
+ * 
+ * @category   Module
+ * @package    /Api/Models
+ * @author     Diego Luis Restrepo <diegoluisr@gmail.com>
+ * @license    http://www.opensource.org/licenses/mit-license.html MIT License
+ * @version    GIT: $Id$
+ * @since      0.0.1
+ */
 class AppModel extends Model {
 
+    /**
+     * 
+     * Validate
+     *
+     * @return void
+    */
     public function validation() {
         $clasname = get_class($this);
         $reader = new Memory();
@@ -46,6 +66,12 @@ class AppModel extends Model {
         return true;
     }
 
+    /**
+     * 
+     * Validate Column
+     *
+     * @return void
+    */
     protected function validateColumn($field, $arguments) {
         if(isset($arguments['type'])){
             switch($arguments['type']) {

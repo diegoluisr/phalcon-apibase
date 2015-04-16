@@ -10,6 +10,20 @@ use \Api\Modules\Account\Models\AccessToken,
     \Phalcon\Acl\Role,
     \Phalcon\Acl\Resource;
 
+/**
+ * /Api/Controllers/AppController.php
+ * 
+ * AppController
+ * 
+ * PHP version 5.3
+ * 
+ * @category   Module
+ * @package    /Api/Controllers
+ * @author     Diego Luis Restrepo  <diegoluisr@gmail.com>
+ * @license    http://www.opensource.org/licenses/mit-license.html MIT License
+ * @version    GIT: $Id$
+ * @since      0.0.1
+*/
 class AppController extends Injectable{
 
     protected $limit = 20;
@@ -18,9 +32,15 @@ class AppController extends Injectable{
     protected $output = array();
     protected $name = '';
 
-
     protected $user = null;
-
+    
+    /**
+     * 
+     * Constructor method
+     *
+     * @param string header - AccessToken token
+     * @return void
+    */
     public function __construct(){
         $di = DI::getDefault();
         $this->setDI($di);
@@ -32,6 +52,12 @@ class AppController extends Injectable{
         $this->user = AccessToken::getUser($access_token, $user_agent, $ip);
     }
 
+    /**
+     * 
+     * Prepare helper to search inside defined fields
+     * @param array $fields
+     * @return array $prepared
+    */
     protected function prepareSearch($fields){
         $request = $this->getDI()->get('request');
         $query = ($request->get('q', null, null)) ?: '';

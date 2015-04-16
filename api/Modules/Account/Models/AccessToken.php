@@ -5,7 +5,20 @@ use Api\Models\AppModel,
     Api\Modules\Account\Models\User,
     DateTime,
     DateInterval;
-
+/**
+ * /Api/Modules/Account/Models/AccessToken.php
+ * 
+ * AccessToken
+ * 
+ * PHP version 5.3
+ * 
+ * @category   Module
+ * @package    /Api/Modules/Account/Models
+ * @author     Diego Luis Restrepo  <diegoluisr@gmail.com>
+ * @license    http://www.opensource.org/licenses/mit-license.html MIT License
+ * @version    GIT: $Id$
+ * @since      0.0.1
+*/
 class AccessToken extends AppModel {
 
     /**
@@ -42,15 +55,30 @@ class AccessToken extends AppModel {
      */
     public $expires_at = '0000-00-00 00:00:00';
 
-
+    /**
+     * 
+     * initialize
+     *
+     * @return void
+    */
     public function initialize() {
         return;
     }
-
+    /**
+     * 
+     * getSource
+     *
+     * @return void
+    */
     public function getSource() {
         return "access_tokens";
     }
-
+    /**
+     * 
+     * getUser
+     *
+     * @return null
+    */
     public static function getUser($token, $user_agent, $ip) {
         $token = self::query()
             ->where('token = :token:')
